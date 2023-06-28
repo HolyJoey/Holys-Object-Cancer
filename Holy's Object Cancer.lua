@@ -31,6 +31,45 @@ menu.toggle_loop(cancer_list, "I liek balls", {}, "", function(toggled)
         end
     end)
 end)
+
+menu.toggle_loop(cancer_list, "We go bowlin", {}, "", function(toggled)
+    spam_thread2 = util.create_thread(function()
+        bowling_hashes = {1467552538, 1399999408}
+        for i, hash in ipairs(bowling_hashes) do
+            local stupid_object2;
+            request_model(hash)
+            local player_ped = PLAYER.GET_PLAYER_PED_SCRIPT_INDEX(pid)
+            local pos = players.get_position(pid)
+            pos.x = pos.x + math.random(1, 32);
+            pos.y = pos.y + math.random(1, 32);
+            pos.z = pos.z + math.random(1, 32);
+            stupid_object2 = entities.create_object(hash, pos)
+            if stupid_object2 then
+                ENTITY.APPLY_FORCE_TO_ENTITY(stupid_object2, 1, 0.0, 0.0, 1, 0.0, 0.0, 0.0, 0, 1, 1, 1, 0, 1)
+            end
+        end
+    end)
+end)
+
+menu.toggle_loop(cancer_list, "Give sum neons", {}, "", function(toggled)
+    spam_thread3 = util.create_thread(function()
+        neon_hashes = {-356229220, 1093406934, -312449604, 347423549, -1194227617}
+        for i, hash in ipairs(neon_hashes) do
+            local stupid_object3;
+            request_model(hash)
+            local player_ped = PLAYER.GET_PLAYER_PED_SCRIPT_INDEX(pid)
+            local pos = players.get_position(pid)
+            pos.x = pos.x + math.random(1, 32);
+            pos.y = pos.y + math.random(1, 32);
+            pos.z = pos.z + math.random(1, 32);
+            stupid_object3 = entities.create_object(hash, pos)
+            if stupid_object3 then
+                ENTITY.APPLY_FORCE_TO_ENTITY(stupid_object3, 1, 0.0, 0.0, 1, 0.0, 0.0, 0.0, 0, 1, 1, 1, 0, 1)
+            end
+        end
+    end)
+end)
+
 end
 
 players.on_join(crashes)
