@@ -9,7 +9,7 @@ local function request_model(hash)
     end
 end
 
-local function crashes(pid)
+local function aids(pid)
 menu.divider(menu.player_root(pid), "Holy's Object Cancer")
 local cancer_list = menu.list(menu.player_root(pid), "Cancer", {}, "", function() end)
 
@@ -19,7 +19,6 @@ menu.toggle_loop(cancer_list, "I liek balls", {}, "", function(toggled)
         for i, hash in ipairs(ball_hashes) do
             local stupid_object;
             request_model(hash)
-            local player_ped = PLAYER.GET_PLAYER_PED_SCRIPT_INDEX(pid)
             local pos = players.get_position(pid)
             pos.x = pos.x + math.random(1, 32);
             pos.y = pos.y + math.random(1, 32);
@@ -38,7 +37,6 @@ menu.toggle_loop(cancer_list, "We go bowlin", {}, "", function(toggled)
         for i, hash in ipairs(bowling_hashes) do
             local stupid_object2;
             request_model(hash)
-            local player_ped = PLAYER.GET_PLAYER_PED_SCRIPT_INDEX(pid)
             local pos = players.get_position(pid)
             pos.x = pos.x + math.random(1, 32);
             pos.y = pos.y + math.random(1, 32);
@@ -57,7 +55,6 @@ menu.toggle_loop(cancer_list, "Give sum neons", {}, "", function(toggled)
         for i, hash in ipairs(neon_hashes) do
             local stupid_object3;
             request_model(hash)
-            local player_ped = PLAYER.GET_PLAYER_PED_SCRIPT_INDEX(pid)
             local pos = players.get_position(pid)
             pos.x = pos.x + math.random(1, 32);
             pos.y = pos.y + math.random(1, 32);
@@ -70,8 +67,51 @@ menu.toggle_loop(cancer_list, "Give sum neons", {}, "", function(toggled)
     end)
 end)
 
+
+menu.toggle_loop(cancer_list, "Mexico Dump", {}, "", function(toggled)
+    spam_thread5 = util.create_thread(function()
+        mexico_hash = {447976993, 1655278098, 1968648045}
+        for i, hash in ipairs(mexico_hash) do
+            local stupid_object5;
+            request_model(hash)
+            local pos = players.get_position(pid)
+            pos.x = pos.x + math.random(1, 32);
+            pos.y = pos.y + math.random(1, 32);
+            pos.z = pos.z + math.random(1, 32);
+            stupid_object5 = entities.create_object(hash, pos)
+            if stupid_object5 then
+                ENTITY.APPLY_FORCE_TO_ENTITY(stupid_object5, 1, 0.0, 0.0, 1, 0.0, 0.0, 0.0, 0, 1, 1, 1, 0, 1)
+            end
+        end
+    end)
+end)
+
+object = "ar_prop_ar_neon_gate4x_01a"
+menu.text_input(cancer_list, "Custom object", { "kys" }, "", function(object2)
+    object = object2
+end)
+
+-- Can use this for props, vehicles and entities
+menu.toggle_loop(cancer_list, "Custom Fuckaroo", {}, "", function(toggled)
+    spam_thread4 = util.create_thread(function()
+        custom_hash = {util.joaat(object)}
+        for i, hash in ipairs(custom_hash) do
+            local stupid_object4;
+            request_model(hash)
+            local pos = players.get_position(pid)
+            pos.x = pos.x + math.random(1, 32);
+            pos.y = pos.y + math.random(1, 32);
+            pos.z = pos.z + math.random(1, 32);
+            stupid_object4 = entities.create_object(hash, pos)
+            if stupid_object4 then
+                ENTITY.APPLY_FORCE_TO_ENTITY(stupid_object4, 1, 0.0, 0.0, 1, 0.0, 0.0, 0.0, 0, 1, 1, 1, 0, 1)
+            end
+        end
+    end)
+end)
+
 end
 
-players.on_join(crashes)
+players.on_join(aids)
 players.dispatch_on_join()
 util.keep_running()
